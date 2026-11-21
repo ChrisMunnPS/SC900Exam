@@ -160,54 +160,6 @@ No cookies, no requests to third parties, no telemetry. Clearing site data for t
 
 ---
 
-## ♿ Accessibility
-
-- Full keyboard operation, including `A`–`E` (or `1`–`5`) answer keys and arrow navigation.
-- Semantic landmarks, a skip link, and a polite live region for toasts.
-- Visible focus rings and readable contrast in both themes.
-- `prefers-reduced-motion` disables the fireworks and shortens transitions.
-- Diagrams are hidden from assistive technology; every diagram question restates the concept in prose.
-
----
-
-## 🛠️ For maintainers
-
-The repository ships the built simulator and the printable cheat sheets. Packaging scripts and batch files live in the working kit, not here.
-
-Scope, bank counts, case coverage, and the diagram map are recorded in `00-EXAM-BLUEPRINT.md`.
-
-**Pipeline**
-
-```text
-exam-sim\            ──01-Package-Standalone.bat──▶  local app.js + styles.css
-exam-sim\            ──02-Make-Web-Copy.bat───────▶  publish\sc-900\ (the upload folder)
-```
-
-**Publishing**
-
-1. Run `01-Package-Standalone.bat`, then `02-Make-Web-Copy.bat`.
-2. Copy the seven files from `publish\sc-900\` into the portfolio repo at `exam-sim/sc-900/`.
-3. Push to `main`; GitHub Pages deploys automatically.
-4. Live at `https://chrismunnps.github.io/exam-sim/sc-900/`.
-
-**Bank format** — the helper at the top of `questions.js` keeps items compact:
-
-```js
-Q(135, 'compliance', 'DLP - purpose',
-  'An organisation must stop employees emailing card numbers externally. Which solution?',
-  ['Data Loss Prevention policies', 'Retention labels',
-   'Insider Risk Management', 'Microsoft Defender for Cloud Apps'],
-  ['A'],
-  'DLP detects sensitive information and blocks or warns at the point of sharing.\n\n**Exam tip:** stop the sharing equals DLP.',
-  'Describe Microsoft compliance solutions - Describe Data Loss Prevention')
-```
-
-The helper stores the keyed answer first, then rotates each item's options with a deterministic per-question seed and remaps the letter references in the explanation. The live exam therefore does not leak the answer position, while the source bank stays easy to review.
-
-The bank has been checked for 180 unique IDs, four options each, valid answer letters, existing case and diagram keys, and multi-answer stems that say "select two". It intentionally avoids volatile details such as prices, licence SKU boundaries, and exact retention defaults that change between plans.
-
----
-
 ## ⚠️ Disclaimer
 
 Unofficial study material built from publicly available Microsoft Learn content. Not affiliated with or endorsed by Microsoft. Exam objectives and product behaviour change; verify the current skills measured on Microsoft Learn before sitting the exam. Facts snapshot: **November 2026**.
