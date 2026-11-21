@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SC-900 cheat sheets - print pack</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #eef2f7;
+    color: #14181f;
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 18px;
+    background: #fff;
+    border-bottom: 1px solid #d8dee9;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .toolbar strong { font-size: .95rem; }
+  .toolbar span { font-size: .76rem; color: #4b5563; }
+  .toolbar button {
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: #0f766e;
+    color: #fff;
+    font: inherit;
+    font-size: .84rem;
+    font-weight: 650;
+    cursor: pointer;
+  }
+  .toolbar button:hover { background: #115e59; }
+  .pack { padding: 18px; display: grid; gap: 18px; justify-content: center; }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 8mm;
+    background: #fff;
+    box-shadow: 0 10px 30px -18px rgba(16, 24, 40, .55);
+    border: 1px solid #e2e8f0;
+    font-size: 8.4pt;
+    line-height: 1.13;
+    column-count: 2;
+    column-gap: 6mm;
+    column-fill: auto;
+  }
+  h1 {
+    margin: 0 0 1.5mm;
+    padding-bottom: 1mm;
+    border-bottom: 1.4pt solid #0f766e;
+    font-size: 1.85em;
+    line-height: 1.12;
+    letter-spacing: -.01em;
+    column-span: all;
+  }
+  h2 {
+    margin: 0 0 .4mm;
+    padding: .8mm 0 .5mm;
+    border-bottom: .7pt solid #cbd5e1;
+    font-size: 1.3em;
+    line-height: 1.15;
+    color: #0f766e;
+    break-after: avoid;
+  }
+  p { margin: 0 0 1.2mm; }
+  p.note {
+    margin: 1mm 0 1.5mm;
+    font-size: .93em;
+    color: #4b5563;
+    column-span: all;
+  }
+  code {
+    font-family: "Cascadia Mono", Consolas, monospace;
+    font-size: .92em;
+    background: #eef2f9;
+    padding: 0 .5mm;
+    border-radius: 1mm;
+  }
+  table {
+    width: 100%;
+    margin: 0 0 1.1mm;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  thead { display: table-header-group; }
+  th {
+    padding: .6mm .95mm;
+    background: #e6f4f1;
+    border: .5pt solid #bcd8d2;
+    font-size: .94em;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-align: left;
+    text-transform: uppercase;
+    color: #134e4a;
+  }
+  td {
+    padding: .5mm .9mm;
+    border: .5pt solid #d7deea;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+  td:first-child { width: 27%; font-weight: 600; color: #0f172a; }
+  tr { break-inside: avoid; }
+  ul { margin: 0 0 1.2mm; padding-left: 3.4mm; }
+  li { margin: 0 0 .4mm; }
+  footer {
+    column-span: all;
+    margin-top: 1.2mm;
+    padding-top: .8mm;
+    border-top: .5pt solid #cbd5e1;
+    font-size: .87em;
+    color: #6b7280;
+  }
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .pack { display: block; padding: 0; }
+    .sheet {
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-shadow: none;
+      break-after: page;
+    }
+    .sheet:last-of-type { break-after: auto; }
+    @page { size: A4 portrait; margin: 8mm; }
+  }
+</style>
+</head>
+<body>
+<header class="toolbar">
+  <div><strong>SC-900 cheat sheets</strong> &middot; <span>four domains, one A4 page each</span></div>
+  <button type="button" onclick="window.print()">Print all four sheets</button>
+</header>
+<main class="pack">
+
+<article class="sheet" id="sheet-1" aria-label="Security, compliance, and identity concepts">
+<h1>SC-900 cheat sheet 1/4 &mdash; Security and identity concepts</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Zero Trust</h2>
+<table><thead><tr><th>Principle</th><th>What it means</th></tr></thead><tbody>
+<tr><td>Verify explicitly</td><td>Authenticate and authorise every request using identity, device, location, data, and risk signals.</td></tr>
+<tr><td>Least privilege</td><td>Minimum access for the shortest time, with just-in-time elevation.</td></tr>
+<tr><td>Assume breach</td><td>Design as if an attacker is inside: segment, monitor, and limit blast radius.</td></tr>
+</tbody></table>
+<p>Zero Trust is a strategy, not a product. It replaces the trusted network with per-request decisions.</p>
+<h2>Defence in depth</h2>
+<table><thead><tr><th>Layer</th><th>Examples</th></tr></thead><tbody>
+<tr><td>Physical</td><td>Badges, guards, locks, cameras, locked racks</td></tr>
+<tr><td>Identity</td><td>MFA, Conditional Access, PIM</td></tr>
+<tr><td>Perimeter</td><td>Firewall, DDoS protection, WAF</td></tr>
+<tr><td>Network</td><td>Segmentation, NSGs, encryption in transit</td></tr>
+<tr><td>Compute</td><td>Patching, hardening, endpoint protection</td></tr>
+<tr><td>Application</td><td>Secure code, input validation, app authentication</td></tr>
+<tr><td>Data</td><td>Encryption, classification, access control, backup</td></tr>
+</tbody></table>
+<p>Layers are independent. <strong>Data is the centre</strong>; every other layer protects it.</p>
+<h2>CIA triad</h2>
+<table><thead><tr><th>Element</th><th>Question and controls</th></tr></thead><tbody>
+<tr><td>Confidentiality</td><td>Who may read it? Encryption, access control, classification.</td></tr>
+<tr><td>Integrity</td><td>Is it unaltered? Hashing, signatures, version control, audit.</td></tr>
+<tr><td>Availability</td><td>Can I reach it? Redundancy, zones, backups, DDoS protection.</td></tr>
+</tbody></table>
+<h2>Core terms</h2>
+<table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Authentication</td><td>Proves who or what is connecting.</td></tr>
+<tr><td>Authorisation</td><td>Decides what that identity may do.</td></tr>
+<tr><td>Accounting</td><td>Records what happened in audit logs.</td></tr>
+<tr><td>Non-repudiation</td><td>Cannot credibly deny an action: signatures, tamper-evident logs.</td></tr>
+<tr><td>Threat</td><td>Something that could cause harm.</td></tr>
+<tr><td>Vulnerability</td><td>A weakness that could be exploited.</td></tr>
+<tr><td>Risk</td><td>Likelihood &times; impact; used to prioritise.</td></tr>
+</tbody></table>
+<h2>Encryption, hashing, PKI</h2>
+<table><thead><tr><th>Concept</th><th>Key facts</th></tr></thead><tbody>
+<tr><td>Symmetric</td><td>One key encrypts and decrypts; fast; bulk data.</td></tr>
+<tr><td>Asymmetric</td><td>Public and private key pair; slower; key exchange and signing.</td></tr>
+<tr><td>At rest</td><td>Stored data: disk, database, backup.</td></tr>
+<tr><td>In transit</td><td>Moving data: TLS, HTTPS, VPN.</td></tr>
+<tr><td>Hashing</td><td>One-way fixed-length digest; integrity; salt for passwords.</td></tr>
+<tr><td>Digital signature</td><td>Hash signed with a private key; origin and integrity.</td></tr>
+<tr><td>PKI and certificates</td><td>A certificate authority binds a public key to an identity.</td></tr>
+</tbody></table>
+<p><strong>Hashing is one-way; encryption is reversible with the key.</strong></p>
+<h2>Threat types</h2>
+<table><thead><tr><th>Threat</th><th>Description</th></tr></thead><tbody>
+<tr><td>Virus</td><td>Attaches to a file; spreads when the file is opened.</td></tr>
+<tr><td>Worm</td><td>Self-replicates across networks with no user action.</td></tr>
+<tr><td>Trojan</td><td>Disguised as legitimate software; needs a user to run it.</td></tr>
+<tr><td>Ransomware</td><td>Encrypts or steals data and demands payment; backups are the recovery.</td></tr>
+<tr><td>Phishing</td><td>Impersonates a trusted sender. Spear phishing is targeted; smishing is SMS.</td></tr>
+<tr><td>DDoS</td><td>Many sources flood a service; an availability attack.</td></tr>
+<tr><td>Brute force</td><td>Many password attempts against one account.</td></tr>
+<tr><td>Credential stuffing</td><td>Reuses leaked credentials from another site; MFA breaks it.</td></tr>
+<tr><td>Privilege escalation</td><td>Raises the attacker level of access.</td></tr>
+<tr><td>Lateral movement</td><td>Moves from one system to another.</td></tr>
+<tr><td>Social engineering</td><td>Manipulates a person into breaking procedure.</td></tr>
+</tbody></table>
+<h2>Shared responsibility</h2>
+<table><thead><tr><th>Layer</th><th>IaaS</th><th>PaaS</th><th>SaaS</th></tr></thead><tbody>
+<tr><td>Physical and host</td><td>Microsoft</td><td>Microsoft</td><td>Microsoft</td></tr>
+<tr><td>Guest OS and runtime</td><td><strong>Customer</strong></td><td>Microsoft</td><td>Microsoft</td></tr>
+<tr><td>Application code</td><td><strong>Customer</strong></td><td><strong>Customer</strong></td><td>Microsoft</td></tr>
+<tr><td>Data, identities, access</td><td><strong>Customer</strong></td><td><strong>Customer</strong></td><td><strong>Customer</strong></td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>Zero Trust means verify everything, not trust nothing.</li>
+<li>Defence in depth is independent layers, not one strong control.</li>
+<li>Encryption hides data; hashing proves it was not changed.</li>
+<li>MFA needs two different factor categories.</li>
+<li>A firewall does not stop a stolen credential; identity controls do.</li>
+</ul>
+<footer>SC-900 cheat sheet 1 of 4 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+<article class="sheet" id="sheet-2" aria-label="Identity and access management">
+<h1>SC-900 cheat sheet 2/4 &mdash; Identity and access management</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Microsoft Entra ID</h2>
+<table><thead><tr><th>Concept</th><th>What to remember</th></tr></thead><tbody>
+<tr><td>Tenant</td><td>Dedicated directory for one organisation. Identity boundary; can hold many subscriptions.</td></tr>
+<tr><td>Security group</td><td>Assigns permissions. No collaboration workload.</td></tr>
+<tr><td>Microsoft 365 group</td><td>Shared mailbox, calendar, SharePoint site, and Teams team.</td></tr>
+<tr><td>Dynamic group</td><td>Membership from an attribute rule. Requires P1.</td></tr>
+<tr><td>Guest (B2B)</td><td>Partner invited into the tenant; authenticates at home.</td></tr>
+<tr><td>External ID (B2C)</td><td>Consumer identity for public apps; customers, not partners.</td></tr>
+<tr><td>Hybrid identity</td><td>On-premises AD synchronised with Microsoft Entra Connect.</td></tr>
+</tbody></table>
+<h2>Hybrid sign-in</h2>
+<table><thead><tr><th>Option</th><th>How it validates</th></tr></thead><tbody>
+<tr><td>Password hash sync</td><td>Entra ID checks a hash of the on-premises hash; simplest.</td></tr>
+<tr><td>Pass-through auth</td><td>Agents validate against on-premises AD in real time.</td></tr>
+<tr><td>Federation (AD FS)</td><td>On-premises server issues claims.</td></tr>
+<tr><td>Seamless SSO</td><td>Kerberos signs in domain-joined devices automatically.</td></tr>
+</tbody></table>
+<h2>Authentication</h2>
+<table><thead><tr><th>Method</th><th>Factor and note</th></tr></thead><tbody>
+<tr><td>Password</td><td>Know. Weakest; reuse and phishing.</td></tr>
+<tr><td>Authenticator app</td><td>Have. Common second factor.</td></tr>
+<tr><td>SMS or voice</td><td>Have. Convenient but interceptable.</td></tr>
+<tr><td>FIDO2 key</td><td>Have. Phishing-resistant; bound to site origin.</td></tr>
+<tr><td>Windows Hello</td><td>Device-bound key plus PIN or biometric; TPM-protected.</td></tr>
+<tr><td>Temporary Access Pass</td><td>Time-limited onboarding or recovery code.</td></tr>
+</tbody></table>
+<table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>MFA</td><td>Two or more factors from different categories: know, have, are.</td></tr>
+<tr><td>Passwordless</td><td>WHfB, Authenticator phone sign-in, or FIDO2. No password.</td></tr>
+<tr><td>SSPR</td><td>Self-service reset after proof of identity; writeback extends to AD.</td></tr>
+<tr><td>Password Protection</td><td>Blocks weak and banned passwords, including a custom list.</td></tr>
+</tbody></table>
+<h2>Conditional Access</h2>
+<table><thead><tr><th>Part</th><th>Examples</th></tr></thead><tbody>
+<tr><td>Assignments</td><td>Users or groups, cloud apps, workload identities.</td></tr>
+<tr><td>Conditions</td><td>User or sign-in risk, location, device platform and state, client app.</td></tr>
+<tr><td>Grant controls</td><td>Block, MFA, compliant or hybrid device, approved app, password change.</td></tr>
+<tr><td>Session controls</td><td>Sign-in frequency, browser persistence, app restrictions, Cloud Apps proxy.</td></tr>
+</tbody></table>
+<p>CA controls <strong>how a sign-in proceeds</strong>; it does not grant resource permissions. Requires P1.</p>
+<h2>Identity Protection</h2>
+<table><thead><tr><th>Risk</th><th>Meaning and response</th></tr></thead><tbody>
+<tr><td>User risk</td><td>Credentials probably compromised; require a password change.</td></tr>
+<tr><td>Sign-in risk</td><td>This attempt looks anomalous; require MFA.</td></tr>
+</tbody></table>
+<p><strong>Identity Protection detects risk; Conditional Access enforces the response.</strong> Requires P2.</p>
+<h2>Access control</h2>
+<table><thead><tr><th>Capability</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Entra roles</td><td>Directory objects: users, groups, apps, identity policy.</td></tr>
+<tr><td>Azure RBAC</td><td>Azure resources; scope inherits downward.</td></tr>
+<tr><td>Administrative units</td><td>Scope an administrator to a subset of users, groups, or devices.</td></tr>
+<tr><td>PIM</td><td>Eligible, time-bound role activation with approval, MFA, and audit. P2.</td></tr>
+</tbody></table>
+<h2>Governance</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Access reviews</td><td>Recurring recertification of access, including guests.</td></tr>
+<tr><td>Entitlement management</td><td>Access packages bundle resources with request, approval, and expiry.</td></tr>
+<tr><td>Lifecycle workflows</td><td>Automate joiner, mover, and leaver tasks.</td></tr>
+<tr><td>Cross-tenant settings</td><td>Control B2B collaboration and trust partner MFA or device claims.</td></tr>
+</tbody></table>
+<h2>SSO protocols</h2>
+<table><thead><tr><th>Protocol</th><th>Remember</th></tr></thead><tbody>
+<tr><td>SAML 2.0</td><td>XML assertions for enterprise SSO.</td></tr>
+<tr><td>OpenID Connect</td><td>Authentication on OAuth 2.0; returns an ID token.</td></tr>
+<tr><td>OAuth 2.0</td><td>Delegated authorisation; returns an access token.</td></tr>
+<tr><td>Federation</td><td>Trust another provider's assertions.</td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>Guest equals B2B partner; customer equals External ID.</li>
+<li>Dynamic groups use attributes and need P1.</li>
+<li>MFA needs different categories, not two passwords.</li>
+<li>SSPR recovers an account; PIM elevates a role.</li>
+<li>Conditional Access needs P1; PIM, Identity Protection, and governance need P2.</li>
+</ul>
+<footer>SC-900 cheat sheet 2 of 4 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+<article class="sheet" id="sheet-3" aria-label="Microsoft security solutions">
+<h1>SC-900 cheat sheet 3/4 &mdash; Microsoft security solutions</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Microsoft Defender XDR</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Incident correlation</td><td>Groups related alerts from endpoint, email, identity, and cloud apps.</td></tr>
+<tr><td>Automated investigation</td><td>Gathers evidence and can quarantine, isolate, or disable.</td></tr>
+<tr><td>Advanced hunting</td><td>KQL over up to 30 days of raw telemetry; custom detections.</td></tr>
+<tr><td>XDR family</td><td>Endpoint, Identity, Office 365, Cloud Apps; Entra ID Protection signals.</td></tr>
+</tbody></table>
+<h2>Defender for Endpoint</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Endpoint protection</td><td>Antivirus for Windows, macOS, Linux, and mobile.</td></tr>
+<tr><td>ASR rules</td><td>Block risky behaviours such as Office child processes.</td></tr>
+<tr><td>EDR</td><td>Behaviour detection and investigation timeline; isolate a device.</td></tr>
+<tr><td>Vulnerability management</td><td>Prioritised missing patches and misconfigurations.</td></tr>
+<tr><td>Plan 1 vs 2</td><td>Plan 2 adds EDR, vulnerability management, AIR, advanced hunting.</td></tr>
+</tbody></table>
+<h2>Defender for Office 365</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Safe Links</td><td>Checks URLs at click time, including Teams and Office.</td></tr>
+<tr><td>Safe Attachments</td><td>Detonates attachments in a sandbox before delivery.</td></tr>
+<tr><td>Anti-phishing</td><td>Impersonation, mailbox intelligence, spoof intelligence.</td></tr>
+<tr><td>Anti-spam</td><td>Spam, bulk mail, quarantine, allow and block lists.</td></tr>
+<tr><td>Attack simulation</td><td>Phishing simulations with automatic remedial training.</td></tr>
+<tr><td>Plan 1 vs 2</td><td>Plan 2 adds AIR, Threat Explorer, campaign views, simulation.</td></tr>
+</tbody></table>
+<h2>Defender for Identity</h2>
+<table><thead><tr><th>Item</th><th>Remember</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>Detects identity attacks against on-premises Active Directory.</td></tr>
+<tr><td>Sensors</td><td>On domain controllers, AD FS, and AD CS servers.</td></tr>
+<tr><td>Detections</td><td>Reconnaissance, compromised credentials, pass-the-hash, lateral movement.</td></tr>
+<tr><td>Not</td><td>Endpoint protection; that is Defender for Endpoint.</td></tr>
+</tbody></table>
+<h2>Defender for Cloud Apps</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Cloud Discovery</td><td>Finds shadow IT from firewall and proxy logs.</td></tr>
+<tr><td>App connectors</td><td>API visibility and governance for sanctioned SaaS.</td></tr>
+<tr><td>App Control</td><td>Reverse proxy blocks download, copy, or print in a session.</td></tr>
+<tr><td>Anomalies</td><td>Impossible travel, unusual downloads, new locations.</td></tr>
+<tr><td>Role</td><td>CASB: SaaS visibility and control, not infrastructure.</td></tr>
+</tbody></table>
+<h2>Defender for Cloud</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>CSPM</td><td>Posture assessment, recommendations, secure score, regulatory compliance.</td></tr>
+<tr><td>CWPP</td><td>Workload plans for servers, containers, storage, SQL, App Service.</td></tr>
+<tr><td>Multicloud</td><td>Azure, AWS, and GCP in one view.</td></tr>
+<tr><td>JIT VM access</td><td>Closes management ports until an approved request.</td></tr>
+</tbody></table>
+<h2>Microsoft Sentinel</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>SIEM</td><td>Collects and correlates Microsoft and third-party logs.</td></tr>
+<tr><td>SOAR</td><td>Logic Apps playbooks automate response with approvals.</td></tr>
+<tr><td>Data connectors</td><td>Ingest Microsoft 365, Azure, syslog, CEF, and third-party data.</td></tr>
+<tr><td>Analytics rules</td><td>Detect activity and create alerts and incidents.</td></tr>
+<tr><td>Workbooks</td><td>Dashboards for monitoring and reporting.</td></tr>
+<tr><td>Workspace</td><td>Data lives in a Log Analytics workspace; KQL queries it.</td></tr>
+</tbody></table>
+<h2>Secure Score and comparisons</h2>
+<table><thead><tr><th>Pair</th><th>Distinction</th></tr></thead><tbody>
+<tr><td>Microsoft Secure Score</td><td>Microsoft 365 posture percentage; improvement actions raise it.</td></tr>
+<tr><td>XDR vs Sentinel</td><td>Native Microsoft correlation vs cross-platform SIEM and SOAR.</td></tr>
+<tr><td>Cloud vs Cloud Apps</td><td>Infrastructure posture vs SaaS discovery and governance.</td></tr>
+<tr><td>Identity vs Endpoint</td><td>Directory authentication attacks vs device malware.</td></tr>
+<tr><td>Office 365 vs Cloud Apps</td><td>Email content vs SaaS application use.</td></tr>
+<tr><td>Safe Links vs Attachments</td><td>URL at click time vs file detonation.</td></tr>
+<tr><td>Rule vs playbook</td><td>Detect and create an incident vs automate the response.</td></tr>
+<tr><td>Alert vs incident</td><td>One detection vs related alerts describing one attack.</td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>All Defender products feed XDR; Sentinel sits above and takes third-party data.</li>
+<li>Cloud Discovery uses traffic logs; app connectors use APIs.</li>
+<li>Identity sensors go on domain controllers, not laptops.</li>
+<li>Secure Score is posture, not attack volume.</li>
+<li>VMs and storage equals Defender for Cloud; unmanaged SaaS equals Cloud Apps.</li>
+</ul>
+<footer>SC-900 cheat sheet 3 of 4 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+<article class="sheet" id="sheet-4" aria-label="Microsoft compliance solutions">
+<h1>SC-900 cheat sheet 4/4 &mdash; Microsoft compliance solutions</h1>
+<p class="note"><em>One page. Facts snapshot 2026-11; verify current behaviour on Microsoft Learn before the exam.</em></p>
+<h2>Microsoft Purview</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Data Map</td><td>Scans Microsoft 365, Azure, on-premises, and multicloud sources.</td></tr>
+<tr><td>Data Catalogue</td><td>Searchable inventory with classifications and ownership.</td></tr>
+<tr><td>Information types</td><td>Pattern detectors for card numbers, national IDs, and more.</td></tr>
+<tr><td>Trainable classifiers</td><td>Learn categories such as contracts from examples.</td></tr>
+</tbody></table>
+<h2>Sensitivity labels</h2>
+<table><thead><tr><th>Setting</th><th>Effect</th></tr></thead><tbody>
+<tr><td>Classification</td><td>Names the confidentiality level.</td></tr>
+<tr><td>Encryption</td><td>Usage rights travel with the file.</td></tr>
+<tr><td>Content marking</td><td>Header, footer, or watermark.</td></tr>
+<tr><td>Label policy</td><td>Publishes labels; sets default and mandatory labelling.</td></tr>
+<tr><td>Auto-labelling</td><td>Applies or recommends a label from content inspection.</td></tr>
+<tr><td>Priority</td><td>Lower order number wins.</td></tr>
+</tbody></table>
+<h2>Data Loss Prevention</h2>
+<table><thead><tr><th>Item</th><th>Remember</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>Detect sensitive content and prevent or warn about sharing.</td></tr>
+<tr><td>Locations</td><td>Exchange, SharePoint, OneDrive, Teams, endpoints.</td></tr>
+<tr><td>Actions</td><td>Audit, tip, block, block with override, restrict apps.</td></tr>
+<tr><td>Policy tips</td><td>Explain the rule and record justifications.</td></tr>
+<tr><td>Endpoint DLP</td><td>USB, print, upload, and clipboard controls.</td></tr>
+</tbody></table>
+<h2>Retention and records</h2>
+<table><thead><tr><th>Concept</th><th>Key facts</th></tr></thead><tbody>
+<tr><td>Retention policy</td><td>Whole location; retain, delete, or both.</td></tr>
+<tr><td>Retention label</td><td>Individual item; travels with it.</td></tr>
+<tr><td>Record</td><td>Content locked; editing and deletion prevented.</td></tr>
+<tr><td>Regulatory record</td><td>Stricter; label cannot be changed or removed.</td></tr>
+<tr><td>Disposition review</td><td>Reviewer confirms deletion or extends retention.</td></tr>
+</tbody></table>
+<h2>Insider Risk Management</h2>
+<table><thead><tr><th>Item</th><th>Remember</th></tr></thead><tbody>
+<tr><td>Purpose</td><td>Detect risky insider activity such as data theft before departure.</td></tr>
+<tr><td>Signals</td><td>Downloads, USB, print, unusual access, HR events.</td></tr>
+<tr><td>Templates</td><td>Departing employee, data leaks, priority users, policy violations.</td></tr>
+<tr><td>Workflow</td><td>Alert, triage, case, investigate, act.</td></tr>
+<tr><td>Privacy</td><td>Role-based access and pseudonymised usernames.</td></tr>
+</tbody></table>
+<h2>eDiscovery</h2>
+<table><thead><tr><th>Feature</th><th>Standard</th><th>Premium</th></tr></thead><tbody>
+<tr><td>Search, hold, export</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Custodians and notices</td><td>No</td><td>Yes</td></tr>
+<tr><td>Review analytics</td><td>Limited</td><td>Near-duplicate, threading, predictive coding</td></tr>
+<tr><td>Remediation</td><td>No</td><td>Yes</td></tr>
+</tbody></table>
+<p>Workflow: search, preserve with a hold, collect into a review set, review, export.</p>
+<h2>Audit</h2>
+<table><thead><tr><th>Feature</th><th>Standard</th><th>Premium</th></tr></thead><tbody>
+<tr><td>Default retention</td><td>180 days</td><td>1 year</td></tr>
+<tr><td>Custom retention</td><td>No</td><td>Up to 10 years</td></tr>
+<tr><td>High-value events</td><td>Limited</td><td>Yes, such as MailItemsAccessed</td></tr>
+</tbody></table>
+<p>Audit records who did what, when, and where. Use audit log search for admin activity.</p>
+<h2>Communication compliance and Compliance Manager</h2>
+<table><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Communication compliance</td><td>Reviews sent messages for conduct and policy breaches.</td></tr>
+<tr><td>Detection</td><td>Classifiers, sensitive information types, keyword lists.</td></tr>
+<tr><td>Compliance Manager</td><td>Assesses controls against standards and regulations.</td></tr>
+<tr><td>Assessment</td><td>One standard; template or custom controls.</td></tr>
+<tr><td>Compliance score</td><td>Points achieved against points available.</td></tr>
+<tr><td>Improvement actions</td><td>Work items behind the score, with status and evidence.</td></tr>
+</tbody></table>
+<h2>Comparison tables</h2>
+<table><thead><tr><th>Pair</th><th>Distinction</th></tr></thead><tbody>
+<tr><td>Label vs DLP</td><td>Classify and protect the item vs prevent a sharing action.</td></tr>
+<tr><td>Policy vs label</td><td>Whole location vs individual item.</td></tr>
+<tr><td>eDiscovery Standard vs Premium</td><td>Search, hold, export vs custodians and review analytics.</td></tr>
+<tr><td>Audit Standard vs Premium</td><td>180 days vs 1 year default and up to 10 years.</td></tr>
+<tr><td>Retention vs eDiscovery hold</td><td>Lifetime management vs legal preservation.</td></tr>
+<tr><td>Communication vs DLP</td><td>Review conduct after sending vs block sharing now.</td></tr>
+</tbody></table>
+<h2>Exam traps</h2>
+<ul>
+<li>A sensitivity label does not set retention.</li>
+<li>DLP can block sharing; a retention label cannot.</li>
+<li>An eDiscovery hold survives user deletion.</li>
+<li>Long audit retention needs Audit Premium.</li>
+<li>Compliance Manager scores controls, not incidents.</li>
+</ul>
+<footer>SC-900 cheat sheet 4 of 4 &middot; unofficial study aid &middot; snapshot 2026-11</footer>
+</article>
+
+</main>
+</body>
+</html>
